@@ -3,6 +3,7 @@ import SimpleKeyboard from './components/SimpleKeyboard.vue';
 import WordRow from './components/WordRow.vue';
 import { reactive, onMounted, computed } from 'vue';
 
+
 const state = reactive({
   solution: "mohir",
   guesses: ["", "", "", "", "", ""],
@@ -69,7 +70,7 @@ onMounted(() => {
 <template>
  <div class="flex flex-col h-screen max-w-md mx-auto justify-evenly">
 
-  <div>
+  <div class="">
     <WordRow
     v-for="(guess, i) in state.guesses"
     :key="i"
@@ -78,12 +79,14 @@ onMounted(() => {
     :submitted="i < state.currentGuessIndex"
     />
   </div>
-  <p v-if="wonGame" class="text-center">
-   Congrats you solved it!
+  <div class="titles flex items-center justify-center">
+  <p v-if="wonGame" class="text-center bg-green-300 rounded-xl w-[250px]">
+    🎉 Congrats you solved it!
   </p>
-  <p v-else-if="lostGame" class="text-center">
-  Out of tries. 
+  <p v-else-if="lostGame" class="text-center bg-orange-300 rounded-xl w-[250px]">
+    😥 Out of tries. 
   </p>
+</div>
 
    <SimpleKeyboard 
    @onKeyPress="handleInput"
