@@ -1,6 +1,7 @@
 <script setup>
 import SimpleKeyboard from './components/SimpleKeyboard.vue';
 import WordRow from './components/WordRow.vue';
+import Header from './components/header.vue';
 import { reactive, onMounted, computed } from 'vue';
 
 
@@ -68,6 +69,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <Header />
  <div class="flex flex-col h-screen max-w-md mx-auto justify-evenly">
 
   <div class="">
@@ -87,7 +89,6 @@ onMounted(() => {
     😥 Out of tries. 
   </p>
 </div>
-
    <SimpleKeyboard 
    @onKeyPress="handleInput"
    :guessedLetters="state.guessedLetters"
